@@ -1,26 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delicious Veg Recipes</title>
-    <link rel="stylesheet" href="Delicious Veg Recipes.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delicious Veg Recipes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: linear-gradient(to bottom right, #fffaf0, #fff);
+      color: #333;
+    }
+    .navbar {
+      background: #ff9800 !important;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    .navbar-brand {
+      font-weight: 700;
+      color: white !important;
+      letter-spacing: 1px;
+    }
+    .hero {
+      background: linear-gradient(to right, #ffb74d, #ff9800);
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
+    }
+    .hero h1 {
+      font-weight: 700;
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+    .hero p {
+      font-size: 18px;
+      opacity: 0.9;
+    }
+    .card {
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    }
+    .card img {
+      height: 180px;
+      object-fit: cover;
+    }
+    .card-body {
+      text-align: center;
+    }
+    .card-title {
+      color: #ff9800;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+    footer {
+      background: #ff9800;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+      font-weight: 500;
+      border-top-left-radius: 40px;
+      border-top-right-radius: 40px;
+    }
+    footer i {
+      margin: 0 10px;
+      color: white;
+      transition: 0.3s;
+    }
+    footer i:hover {
+      color: #ffe0b2;
+    }
+  </style>
 </head>
 <body>
-    <div class="header">Delicious Veg Recipes</div>
+
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
-        <div class="card">
-            <img src="https://source.unsplash.com/250x150/?vegetarian,food" alt="Recipe">
-            <h3>Delicious Paneer Tikka</h3>
-        </div>
-        <div class="card">
-            <img src="https://source.unsplash.com/250x150/?healthy,salad" alt="Recipe">
-            <h3>Healthy Green Salad</h3>
-        </div>
-        <div class="card">
-            <img src="https://source.unsplash.com/250x150/?indian,curry" alt="Recipe">
-            <h3>Spicy Dal Tadka</h3>
-        </div>
+      <a class="navbar-brand" href="#"><i class="fa-solid fa-leaf"></i> Delicious Veg Recipes</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     </div>
+  </nav>
+
+  <section class="hero mt-5">
+    <h1>Fresh, Flavorful & 100% Veg!</h1>
+    <p>Explore mouth-watering vegetarian recipes that are both healthy and delicious.</p>
+  </section>
+
+  <div class="container my-5">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://source.unsplash.com/400x250/?paneer,tikka" class="card-img-top" alt="Paneer Tikka">
+          <div class="card-body">
+            <h5 class="card-title">Delicious Paneer Tikka</h5>
+            <p class="card-text">Grilled paneer cubes marinated in spicy yogurt blend, served hot and smoky.</p>
+            <button class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#paneerModal">View Recipe</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://source.unsplash.com/400x250/?green,salad" class="card-img-top" alt="Green Salad">
+          <div class="card-body">
+            <h5 class="card-title">Healthy Green Salad</h5>
+            <p class="card-text">A refreshing mix of greens, veggies, and zesty dressing for a perfect light meal.</p>
+            <button class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#saladModal">View Recipe</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://source.unsplash.com/400x250/?dal,tadka" class="card-img-top" alt="Dal Tadka">
+          <div class="card-body">
+            <h5 class="card-title">Spicy Dal Tadka</h5>
+            <p class="card-text">Classic Indian lentil curry topped with sizzling spices and ghee tempering.</p>
+            <button class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#dalModal">View Recipe</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Delicious Veg Recipes | Made with <i class="fa-solid fa-heart"></i> by Sai Smruti Ranjan Das</p>
+    <div>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+  </footer>
+
+  <div class="modal fade" id="paneerModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-warning text-white">
+          <h5 class="modal-title">Delicious Paneer Tikka</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <h6>Ingredients:</h6>
+          <ul>
+            <li>200g Paneer (cubed)</li>
+            <li>1/2 cup Yogurt</li>
+            <li>1 tsp Red Chili Powder</li>
+            <li>1/2 tsp Turmeric</li>
+            <li>1 tbsp Lemon Juice</li>
+          </ul>
+          <h6>Instructions:</h6>
+          <ol>
+            <li>Mix yogurt with spices and lemon juice.</li>
+            <li>Marinate paneer cubes for 30 mins.</li>
+            <li>Grill until golden brown on both sides.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="saladModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-warning text-white">
+          <h5 class="modal-title">Healthy Green Salad</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <h6>Ingredients:</h6>
+          <ul>
+            <li>1 cup Lettuce</li>
+            <li>1/2 cup Cucumber (sliced)</li>
+            <li>1 Tomato (chopped)</li>
+            <li>1 tsp Olive Oil</li>
+            <li>Salt & Pepper to taste</li>
+          </ul>
+          <h6>Instructions:</h6>
+          <ol>
+            <li>Combine all ingredients in a bowl.</li>
+            <li>Drizzle olive oil and season.</li>
+            <li>Toss and serve fresh.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="dalModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-warning text-white">
+          <h5 class="modal-title">Spicy Dal Tadka</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <h6>Ingredients:</h6>
+          <ul>
+            <li>1 cup Yellow Lentils</li>
+            <li>1 Onion (chopped)</li>
+            <li>2 Tomatoes (chopped)</li>
+            <li>1 tsp Cumin Seeds</li>
+            <li>1 tbsp Ghee</li>
+          </ul>
+          <h6>Instructions:</h6>
+          <ol>
+            <li>Boil dal until soft.</li>
+            <li>Prepare tadka with ghee, cumin, and onions.</li>
+            <li>Add tomatoes and pour over dal.</li>
+            <li>Serve hot with rice or roti.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
