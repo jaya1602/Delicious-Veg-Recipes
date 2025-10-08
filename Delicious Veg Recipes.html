@@ -3,109 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Theme Switcher</title>
+  <title>Delicious Veg Recipes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
-    /* --- General Styles --- */
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      transition: all 0.4s ease-in-out;
       font-family: 'Poppins', sans-serif;
     }
-
     body {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #74ABE2, #5563DE);
-      overflow: hidden;
+      background: linear-gradient(to bottom right, #fffaf0, #fff);
+      color: #333;
     }
-
-    .container {
-      text-align: center;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-      padding: 40px;
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-      animation: fadeInUp 1.2s ease forwards;
+    .navbar {
+      background: #ff9800 !important;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
-
-    h1 {
-      font-size: 2.2rem;
-      margin-bottom: 20px;
-      color: #fff;
-      text-shadow: 0 0 10px rgba(255,255,255,0.4);
+    .navbar-brand {
+      font-weight: 700;
+      color: white !important;
+      letter-spacing: 1px;
     }
-
-    p {
-      font-size: 1.1rem;
-      color: #f1f1f1;
-      margin-bottom: 30px;
-      animation: fadeInDown 1.5s ease forwards;
-    }
-
-    /* --- Button Styling --- */
-    .theme-btn {
-      padding: 12px 30px;
-      font-size: 1rem;
-      font-weight: bold;
-      border: none;
-      border-radius: 50px;
-      background: linear-gradient(45deg, #ff6b6b, #f94d6a);
+    .hero {
+      background: linear-gradient(to right, #ffb74d, #ff9800);
       color: white;
-      cursor: pointer;
-      box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
-      transition: all 0.3s ease;
-      position: relative;
+      padding: 80px 20px;
+      text-align: center;
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
+    }
+    .hero h1 {
+      font-weight: 700;
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+    .hero p {
+      font-size: 18px;
+      opacity: 0.9;
+    }
+    .card {
+      border: none;
+      border-radius: 15px;
       overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    }
+    .card img {
+      height: 180px;
+      object-fit: cover;
+    }
+    .card-body {
+      text-align: center;
+    }
+    .card-title {
+      color: #ff9800;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+    footer {
+      background: #ff9800;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+      font-weight: 500;
+      border-top-left-radius: 40px;
+      border-top-right-radius: 40px;
+    }
+    footer i {
+      margin: 0 10px;
+      color: white;
+      transition: 0.3s;
+    }
+    footer i:hover {
+      color: #ffe0b2;
     }
 
-    .theme-btn::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.6) 10%, transparent 10.01%);
-      transform: scale(0);
-      transition: transform 0.4s ease-out;
-      border-radius: 50%;
+    /* Popup Animation */
+    .animate-popup {
+      animation: fadeInUp 0.6s ease;
     }
 
-    .theme-btn:hover::before {
-      transform: scale(1);
-    }
-
-    .theme-btn:hover {
-      box-shadow: 0 0 25px #ffb3b3, 0 0 50px #ff7e7e;
-      transform: scale(1.05);
-    }
-
-    /* --- Dark Theme --- */
-    .dark {
-      background: linear-gradient(135deg, #1a1a2e, #16213e);
-      color: #f1f1f1;
-    }
-
-    .dark .container {
-      background: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
-    }
-
-    .dark .theme-btn {
-      background: linear-gradient(45deg, #00c6ff, #0072ff);
-      box-shadow: 0 0 20px rgba(0, 200, 255, 0.5);
-    }
-
-    .dark .theme-btn:hover {
-      box-shadow: 0 0 25px #00e1ff, 0 0 50px #007fff;
-    }
-
-    /* --- Animations --- */
     @keyframes fadeInUp {
       from {
         transform: translateY(40px);
@@ -117,65 +99,243 @@
       }
     }
 
-    @keyframes fadeInDown {
-      from {
-        transform: translateY(-30px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
+    /* Validation highlight */
+    input:invalid {
+      border: 2px solid #f44336;
     }
-
-    /* --- Floating Background Bubbles --- */
-    .bubble {
-      position: absolute;
-      bottom: -50px;
-      width: 40px;
-      height: 40px;
-      background: rgba(255,255,255,0.15);
-      border-radius: 50%;
-      animation: float 8s infinite ease-in-out;
-    }
-
-    @keyframes float {
-      from {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-      }
-      to {
-        transform: translateY(-800px) scale(1.5);
-        opacity: 0;
-      }
+    input:valid {
+      border: 2px solid #4caf50;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Welcome to My Theme Switcher 🌈</h1>
-    <p>Click the button below to toggle between Light and Dark mode!</p>
-    <button class="theme-btn" id="themeToggle">Switch Theme</button>
+
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#"><i class="fa-solid fa-leaf"></i> Delicious Veg Recipes</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <button class="btn btn-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+        <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#signupModal">Sign Up</button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero mt-5">
+    <h1>Fresh, Flavorful & 100% Veg!</h1>
+    <p>Explore mouth-watering vegetarian recipes that are both healthy and delicious.</p>
+  </section>
+
+  <div class="container my-5">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://source.unsplash.com/400x250/?paneer,tikka" class="card-img-top" alt="Paneer Tikka">
+          <div class="card-body">
+            <h5 class="card-title">Delicious Paneer Tikka</h5>
+            <p class="card-text">Grilled paneer cubes marinated in spicy yogurt blend, served hot and smoky.</p>
+            <button class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#paneerModal">View Recipe</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://source.unsplash.com/400x250/?green,salad" class="card-img-top" alt="Green Salad">
+          <div class="card-body">
+            <h5 class="card-title">Healthy Green Salad</h5>
+            <p class="card-text">A refreshing mix of greens, veggies, and zesty dressing for a perfect light meal.</p>
+            <button class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#saladModal">View Recipe</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://source.unsplash.com/400x250/?dal,tadka" class="card-img-top" alt="Dal Tadka">
+          <div class="card-body">
+            <h5 class="card-title">Spicy Dal Tadka</h5>
+            <p class="card-text">Classic Indian lentil curry topped with sizzling spices and ghee tempering.</p>
+            <button class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target="#dalModal">View Recipe</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- Floating Bubbles for Animation -->
-  <div class="bubble" style="left:10%; animation-delay:0s;"></div>
-  <div class="bubble" style="left:30%; animation-delay:2s;"></div>
-  <div class="bubble" style="left:50%; animation-delay:4s;"></div>
-  <div class="bubble" style="left:70%; animation-delay:1s;"></div>
-  <div class="bubble" style="left:90%; animation-delay:3s;"></div>
+  <footer>
+    <p>© 2025 Delicious Veg Recipes | Made with <i class="fa-solid fa-heart"></i> by Sai Smruti Ranjan Das</p>
+    <div>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+  </footer>
 
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered animate-popup">
+      <div class="modal-content">
+        <div class="modal-header bg-warning text-white">
+          <h5 class="modal-title">Login</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="loginForm">
+            <div class="mb-3">
+              <label>Email</label>
+              <input type="email" class="form-control" id="loginEmail" required>
+            </div>
+            <div class="mb-3">
+              <label>Password</label>
+              <input type="password" class="form-control" id="loginPassword" required minlength="6">
+            </div>
+            <button type="submit" class="btn btn-warning w-100 text-white">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Signup Modal -->
+  <div class="modal fade" id="signupModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered animate-popup">
+      <div class="modal-content">
+        <div class="modal-header bg-warning text-white">
+          <h5 class="modal-title">Sign Up</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="signupForm">
+            <div class="mb-3">
+              <label>Full Name</label>
+              <input type="text" class="form-control" id="signupName" required>
+            </div>
+            <div class="mb-3">
+              <label>Email</label>
+              <input type="email" class="form-control" id="signupEmail" required>
+            </div>
+            <div class="mb-3">
+              <label>Password</label>
+              <input type="password" class="form-control" id="signupPassword" required minlength="6">
+            </div>
+            <button type="submit" class="btn btn-warning w-100 text-white">Sign Up</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recipe Modals -->
+  <div class="modal fade" id="paneerModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-warning text-white">
+          <h5 class="modal-title">Delicious Paneer Tikka</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <h6>Ingredients:</h6>
+          <ul>
+            <li>200g Paneer (cubed)</li>
+            <li>1/2 cup Yogurt</li>
+            <li>1 tsp Red Chili Powder</li>
+            <li>1/2 tsp Turmeric</li>
+            <li>1 tbsp Lemon Juice</li>
+          </ul>
+          <h6>Instructions:</h6>
+          <ol>
+            <li>Mix yogurt with spices and lemon juice.</li>
+            <li>Marinate paneer cubes for 30 mins.</li>
+            <li>Grill until golden brown on both sides.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="saladModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-warning text-white">
+          <h5 class="modal-title">Healthy Green Salad</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <h6>Ingredients:</h6>
+          <ul>
+            <li>1 cup Lettuce</li>
+            <li>1/2 cup Cucumber (sliced)</li>
+            <li>1 Tomato (chopped)</li>
+            <li>1 tsp Olive Oil</li>
+            <li>Salt & Pepper to taste</li>
+          </ul>
+          <h6>Instructions:</h6>
+          <ol>
+            <li>Combine all ingredients in a bowl.</li>
+            <li>Drizzle olive oil and season.</li>
+            <li>Toss and serve fresh.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="dalModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-warning text-white">
+          <h5 class="modal-title">Spicy Dal Tadka</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <h6>Ingredients:</h6>
+          <ul>
+            <li>1 cup Yellow Lentils</li>
+            <li>1 Onion (chopped)</li>
+            <li>2 Tomatoes (chopped)</li>
+            <li>1 tsp Cumin Seeds</li>
+            <li>1 tbsp Ghee</li>
+          </ul>
+          <h6>Instructions:</h6>
+          <ol>
+            <li>Boil dal until soft.</li>
+            <li>Prepare tadka with ghee, cumin, and onions.</li>
+            <li>Add tomatoes and pour over dal.</li>
+            <li>Serve hot with rice or roti.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    const toggleBtn = document.getElementById('themeToggle');
-    const body = document.body;
-
-    toggleBtn.addEventListener('click', () => {
-      body.classList.toggle('dark');
-      if (body.classList.contains('dark')) {
-        toggleBtn.textContent = 'Switch to Light Mode ☀️';
-      } else {
-        toggleBtn.textContent = 'Switch to Dark Mode 🌙';
+    document.getElementById("loginForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const email = document.getElementById("loginEmail").value;
+      const password = document.getElementById("loginPassword").value;
+      if(password.length < 6){
+        alert("Password must be at least 6 characters!");
+        return;
       }
+      alert("Login Successful!");
+      this.reset();
+    });
+
+    document.getElementById("signupForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const name = document.getElementById("signupName").value;
+      const email = document.getElementById("signupEmail").value;
+      const password = document.getElementById("signupPassword").value;
+      if(password.length < 6){
+        alert("Password must be at least 6 characters!");
+        return;
+      }
+      alert(`Welcome, ${name}! Signup Successful.`);
+      this.reset();
     });
   </script>
 </body>
